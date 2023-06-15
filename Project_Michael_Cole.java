@@ -1,8 +1,11 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 
 public class Project_Michael_Cole
 {   
-   public static void main(String[] args)
+   public static void main(String[] args) throws IOException
    {
       //declare variables
       String policyNumber;
@@ -13,39 +16,39 @@ public class Project_Michael_Cole
       String smokingStatus;
       double height;
       double weight;
-      Scanner keyboard = new Scanner(System.in);
+      
    
-      // prompt user to enter information   
-      System.out.print("Please enter the Policy Number: ");
-      policyNumber = keyboard.nextLine();
+      // arraylist to store objects
+      ArrayList<Policy> policyList = new ArrayList<Policy>();
+      
+      // create the file and open it
+      File file = new File("PolicyInformation.txt");
+      Scanner inputFile = new Scanner(file);
+      
+      // process all information in file
+      while(inputFile.hasNext())
+      {
+      
+         policyNumber = inputFile.nextLine();
+         providerName = inputFile.nextLine();
+         firstName = inputFile.nextLine();
+         lastName = inputFile.nextLine();
+         age = inputFile.nextInt();
+         inputFile.nextLine();
+         smokingStatus = inputFile.nextLine();
+         height = inputFile.nextDouble();
+         weight = inputFile.nextDouble();
+         
+         // check for end of file
+         if(inputFile.hasNext())
+            inputFile.nextLine();
+         if(inputFile.hasNext())
+            inputFile.nextLine();
             
-      System.out.print("Please enter the Provider Name: ");
-      providerName = keyboard.nextLine();
+         // creating the policy object as well as adding to arraylist
+         policyList.add(new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight));
       
-      System.out.print("Please enter the Policyholder's First Name: ");
-      firstName = keyboard.nextLine();
-      
-      System.out.print("Please enter the Policyholder's Last Name: ");
-      lastName = keyboard.nextLine();
-      
-      System.out.print("Please enter the Policyholder's Age: ");
-      age = keyboard.nextInt();
-      keyboard.nextLine();
-      
-      System.out.print("Please enter the Policyholder's Smoking Status (smoker/non-smoker): ");
-      smokingStatus = keyboard.nextLine();
-      
-      System.out.print("Please enter the Policyholder's Height (in inches): ");
-      height = keyboard.nextDouble();
-      
-      System.out.print("Please enter the Policyholder's Weight (in pounds): ");
-      weight = keyboard.nextDouble();
-      
-      // create a Policy object
-      Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
-      
-      // blank line
-      System.out.println();
+      }
       
       //display information about the Policy
       System.out.println("Policy Number: " + policy.getPolicyNumber());
