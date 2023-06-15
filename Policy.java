@@ -23,7 +23,16 @@ public class Policy
       weight = 0;
    }
    
-   // constructor accepting arguments
+   /** constructor accepting arguments
+   @param pNumber The Policy number
+   @param pName The Policy Provider's Name
+   @param fName The Policyhodler's first name
+   @param lName The Policyholder's last name
+   @param a The Policyholder's age
+   @param sStatus The Policyholder's smoking status
+   @param h The Policyholder's height
+   @param w The Policytholder's weight
+   */
    public Policy(String pNumber, String pName, String fName, String lName, int a, String sStatus, double h, double w)
    {
       policyNumber = pNumber;
@@ -37,89 +46,107 @@ public class Policy
    }
    
    // setters
+   
+   //@return The Policy Number
    public void setPolicyNumber(String pNumber)
    {
       policyNumber = pNumber;
    }
    
+   // @return The Policy Provider's Name
    public void setProviderName(String pName)
    {
       providerName = pName;
    }
    
+   // @return The Policyholder's first name
    public void setFirstName(String fName)
    {
       firstName = fName;
    }
    
+   // @return The Policyholder's last name
    public void setLastName(String lName)
    {
       lastName = lName;
    }
    
+   // @return The Policyholder's age
    public void setAge(int a)
    {
       age = a;
    }
    
+   // @return The Policyholder's smoking status
    public void setSmokingStatus(String sStatus)
    {
       smokingStatus = sStatus;
    }
    
+   // @return The Policyholder's height
    public void setHeight(double h)
    {
       height = h;
    }
    
+   // @return The Policyholder's weight
    public void setWeight(double w)
    {
       weight = w;
    }
    
-   // getters
+   // Getters
+   
+   // @param pNumber The Policy Number
    public String getPolicyNumber()
    {
       return policyNumber;
    }
    
+   // @param pName The Policy Provider's name
    public String getProviderName()
    {
       return providerName;
    }
    
+   // @param fName The Policy Provider's first name
    public String getFirstName()
    {
       return firstName;
    }
    
+   // @param lName The Policy Provider's last name
    public String getLastName()
    {
       return lastName;
    }
    
+   // @param a The Policy Provider's age
    public int getAge()
    {
       return age;
    }
    
+   // @param sStatus The Policy Provider's smoking status
    public String getSmokingStatus()
    {
       return smokingStatus;
    }
    
+   // @param h The Policy Provider's height
    public double getHeight()
    {
       return height;
    }
    
+   // @param w The Policy Provider's weight
    public double getWeight()
    {
       return weight;
    }
    
    /* calculate and return BMI
-      @param weight 
+      @return The BMI of the Policyholder
    */
    public double getBMI()
    {
