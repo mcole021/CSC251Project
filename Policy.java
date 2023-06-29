@@ -4,11 +4,15 @@ public class Policy
    private String policyNumber;
    private String providerName;
    
+   // static field to track num of policy objects
+   public static int numOfPolicies = 0;
+   
    // constructor
    public Policy()
    {
       policyNumber = "";
       providerName = "";
+      numOfPolicies++;
    }
    
    /** constructor accepting arguments
@@ -19,6 +23,7 @@ public class Policy
    {
       policyNumber = pNumber;
       providerName = pName;
+      numOfPolicies++;
    }
    
    // setters
