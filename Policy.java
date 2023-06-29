@@ -3,6 +3,7 @@ public class Policy
    // declare fields
    private String policyNumber;
    private String providerName;
+   private PolicyHolder ph;
    
    // static field to track num of policy objects
    public static int numOfPolicies = 0;
@@ -12,63 +13,85 @@ public class Policy
    {
       policyNumber = "";
       providerName = "";
+      ph = new PolicyHolder();
       numOfPolicies++;
    }
    
-   /** constructor accepting arguments
-   @param pNumber The Policy number
-   @param pName The Policy Provider's Name
+   /**
+   Constructor that accepts arguments for each field
+   @param policyNumber The Policy number
+   @param providerName The Policy Provider's Name
+   @param ph The PolicyHolder for the policy
    */
-   public Policy(String pNumber, String pName)
+   public Policy(String policyNumber, String providerName, PolicyHolder ph)
    {
-      policyNumber = pNumber;
-      providerName = pName;
+      this.policyNumber = policyNumber;
+      this.providerName = providerName;
+      this.ph = new PolicyHolder(ph);
       numOfPolicies++;
    }
    
    // setters
    
-   //@return The Policy Number
-   public void setPolicyNumber(String pNumber)
+   // @param pNumber The Policy Number
+   public void setPolicyNumber(String policyNumber)
    {
-      policyNumber = pNumber;
+      this.policyNumber = policyNumber;
    }
+
+   // @param pName The Policy Provider's name
+   public void setProviderName(String providerName)
+   {
+      this.providerName = providerName;
+   }
+   
+   // @param ph The PolicyHolder for the policy
+   public void setPolicyHolder(PolicyHolder ph)
+   {
+      this.ph = new PolicyHolder(ph);
+   }  
    
    // Getters
    
-   // @param pNumber The Policy Number
+   // @return The Policy Number
    public String getPolicyNumber()
    {
       return policyNumber;
    }
-   
-   // @param pName The Policy Provider's name
+
+   // @return The Policy Provider's Name
    public String getProviderName()
    {
       return providerName;
+   }
+  
+   // @return The PolicyHolder for the policy
+   public PolicyHolder getPolicyHolder()
+   {
+      return new PolicyHolder(ph);
    }
    
    // calculate the price of the policy and return price
    public double getPrice()
    {
-      final double baseP = 600;
-      final double ageFee = 75;
-      final double smokeFee = 100;
-      final double bmiFee = 20;
-      final int ageLimit = 50;
-      final int bmiLimit = 35;
+      final double BASE_PRICE = 600;
+      final double ADDITIONAL_FEE_AGE = 75;
+      final double ADDITIONAL_FEE_SMOKING = 100;
+      final double ADDITIONAL_FEE_PER_BMI = 20;
       
-      double price = baseP;
+      final int AGE_THRESHOLD = 50;
+      final int BMI_THRESHOLD = 35;
       
-      if(age > ageLimit) 
-         price += ageFee;
+      double price = BASE_PRICE;
+      
+      if(ph.getAge() > AGE_THRESHOLD)
+         price += ADDITIONAL_FEE_AGE;
          
-      if(smokingStatus.equalsIgnoreCase("smoker")) 
-         price += smokeFee;
-            
-      //call the getBMI method
-      if(getBMI() > bmiLimit) //BMI over 35
-         price += ((getBMI() - bmiLimit) * bmiFee); //additional BMI fee - 20
+      if(ph.getSmokingStatus().equalsIgnoreCase("smoker"))
+         price += ADDITIONAL_FEE_SMOKING;
+      
+      if(ph.getBMI() > BMI_THRESHOLD)
+         price += ((ph.getBMI() - BMI_THRESHOLD) * ADDITIONAL_FEE_PER_BMI);
          
       return price;
    }
@@ -80,6 +103,7 @@ public class Policy
    {
       return String.format("Policy Number: " + policyNumber +
                            "\nProvider Name: " + providerName +
+                           "\n" + ph +
                            "\nPolicy Price: $%.2f", getPrice());
    }
 }

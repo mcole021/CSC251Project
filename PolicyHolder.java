@@ -9,7 +9,7 @@ public class PolicyHolder
    private double weight;
    
    // constructor
-   public Policy()
+   public PolicyHolder()
    {
       firstName = "";
       lastName = "";
@@ -20,94 +20,120 @@ public class PolicyHolder
    }
    
    /** constructor accepting arguments
-   @param fName The Policyhodler's first name
-   @param lName The Policyholder's last name
-   @param a The Policyholder's age
-   @param sStatus The Policyholder's smoking status
-   @param h The Policyholder's height
-   @param w The Policytholder's weight
+   @param firstName The Policyhodler's first name
+   @param lastName The Policyholder's last name
+   @param age The Policyholder's age
+   @param smokingStatus The Policyholder's smoking status
+   @param height The Policyholder's height
+   @param wweight The Policytholder's weight
    */
-   public Policy(String fName, String lName, int a, String sStatus, double h, double w)
+   public PolicyHolder(String firstName, String lastName,int age, String smokingStatus, double height, double weight)
    {
-      firstName = fName;
-      lastName = lName;
-      age = a;
-      smokingStatus = sStatus;
-      height = h;
-      weight = w;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.age = age;
+      this.smokingStatus = smokingStatus;
+      this.height = height;
+      this.weight = weight;
+   }
+   
+   /**
+   @param obj2 The PolicyHolder to return a copy of
+   */
+   public PolicyHolder(PolicyHolder obj2)
+   {
+      this.firstName = obj2.getfirstName();
+      this.lastName = obj2.getlastName();
+      this.age = obj2.getAge();
+      this.smokingStatus = obj2.getSmokingStatus();
+      this.height = obj2.getHeight();
+      this.weight = obj2.getWeight();
    }
    
    // setters
    
-   // @return The Policyholder's first name
-   public void setFirstName(String fName)
+   
+   // @param firstName The PolicyHolder's first name
+   public void setfirstName(String firstName)
    {
-      firstName = fName;
+      this.firstName = firstName;
+   }
+  
+   // @param lastName The PolicyHolder's last name
+   public void setlastName(String lastName)
+   {
+      this.lastName = lastName;
+   }
+
+   // @param age The PolicyHolder's age
+   public void setAge(int age)
+   {
+      this.age = age;
+   }
+
+   // @param smokingStatus The PolicyHolder's smoking status
+   public void setSmokingStatus(String smokingStatus)
+   {
+      this.smokingStatus = smokingStatus;
    }
    
-   // @return The Policyholder's last name
-   public void setLastName(String lName)
+   // @param height The PolicyHolder's height
+   public void setHeight(double height)
    {
-      lastName = lName;
+      this.height = height;
    }
-   
-   // @return The Policyholder's age
-   public void setAge(int a)
+
+   // @param weight The PolicyHolder's weight
+   public void setWeight(double weight)
    {
-      age = a;
-   }
-   
-   // @return The Policyholder's smoking status
-   public void setSmokingStatus(String sStatus)
-   {
-      smokingStatus = sStatus;
-   }
-   
-   // @return The Policyholder's height
-   public void setHeight(double h)
-   {
-      height = h;
-   }
-   
-   // @return The Policyholder's weight
-   public void setWeight(double w)
-   {
-      weight = w;
+      this.weight = weight;
    }
    
    // Getters
    
-   // @param fName The Policy Provider's first name
-   public String getFirstName()
+   /**
+   @return The Policyholder's first name
+   */
+   public String getfirstName()
    {
       return firstName;
    }
    
-   // @param lName The Policy Provider's last name
-   public String getLastName()
+   /**
+   @return The Policyholder's last name
+   */
+   public String getlastName()
    {
       return lastName;
    }
    
-   // @param a The Policy Provider's age
+   /**
+   @return The Policyholder's age
+   */
    public int getAge()
    {
       return age;
    }
    
-   // @param sStatus The Policy Provider's smoking status
+   /**
+   @return The Policyholder's smoking status
+   */
    public String getSmokingStatus()
    {
       return smokingStatus;
    }
    
-   // @param h The Policy Provider's height
+   /**
+   @return The Policyholder's height
+   */
    public double getHeight()
    {
       return height;
    }
    
-   // @param w The Policy Provider's weight
+   /**
+   @return The Policyholder's weight
+   */
    public double getWeight()
    {
       return weight;
