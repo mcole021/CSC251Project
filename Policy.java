@@ -67,4 +67,14 @@ public class Policy
          
       return price;
    }
+   
+   /**
+   @return A String that describes the Policy
+   */
+   public String toString()
+   {
+      return String.format("Policy Number: " + policyNumber +
+                           "\nProvider Name: " + providerName +
+                           "\nPolicy Price: $%.2f", getPrice());
+   }
 }
